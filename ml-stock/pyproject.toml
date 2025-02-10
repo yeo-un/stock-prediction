@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "ml-stock"
+version = "0.1.0"
+description = ""
+authors = ["yeo-un <devyeoun@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.8"
+uvicorn = "^0.34.0"
+pandas = "^2.2.3"
+scikit-learn = "^1.6.1"
+numpy = "^2.2.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+black = "^25.1.0"
+flake8 = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
