@@ -15,9 +15,9 @@ services:
 
   ml-service:
     build:
-      context: ./ml-service
+      context: ./ml-stock
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./ml-service:/app
+      - ./ml-stock:/app
