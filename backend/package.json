@@ -1,8 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
+    "dev": "ts-node src/routes/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,9 +13,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
-    "express": "^4.21.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "ts-node": "^10.9.1"
   }
 }
