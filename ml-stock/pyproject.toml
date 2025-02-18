@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["yeo-un <devyeoun@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12.7"
@@ -11,7 +12,8 @@ fastapi = "^0.115.8"
 uvicorn = "^0.34.0"
 pandas = "^2.2.3"
 scikit-learn = "^1.6.1"
-numpy = "^2.2.2"
+numpy = ">=1.26.0,<2.1.0"
+tensorflow = "^2.18.0"
 
 
 [tool.poetry.group.dev.dependencies]
