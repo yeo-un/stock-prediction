@@ -1,5 +1,5 @@
 import tensorflow as tf
-from keras import Sequential
+from keras import Sequential, Input, Model
 from keras.layers import LSTM, Dense, Dropout
 import numpy as np
 
@@ -9,19 +9,26 @@ class LSTMPredictor:
         self.model = self._build_model()
         
     def _build_model(self):
-        model = Sequential([
-            LSTM(50, return_sequences=True, input_shape=(self.sequence_length, 5)),
-            Dropout(0.2),
-            LSTM(50, return_sequences=False),
-            Dropout(0.2),
-            Dense(25),
-            Dense(1)
-        ])
+        inputs = Input(shape=(self.sequence_length, 5))
         
+        # LSTM 레이어 추가 및 유닛 수 증가
+        x = LSTM(100, return_sequences=True)(inputs)
+        x = Dropout(0.3)(x)
+        x = LSTM(100, return_sequences=True)(x)
+        x = Dropout(0.3)(x)
+        x = LSTM(50)(x)
+        x = Dropout(0.3)(x)
+        
+        # Dense 레이어 추가
+        x = Dense(50, activation='relu')(x)
+        x = Dense(25, activation='relu')(x)
+        outputs = Dense(1)(x)
+        
+        model = Model(inputs=inputs, outputs=outputs)
         model.compile(
             optimizer='adam',
-            loss='mse',
-            metrics=['mae']
+            loss='huber',  # Huber loss는 이상치에 더 강건합니다
+            metrics=['mae', 'mse']
         )
         return model
     

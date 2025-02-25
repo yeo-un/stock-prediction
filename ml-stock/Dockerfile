@@ -10,6 +10,9 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry config virtualenvs.create false \
     && poetry install --only main --no-root
 
+# static 디렉토리 생성
+RUN mkdir -p static
+
 # 애플리케이션 코드 복사
 COPY . .
 
