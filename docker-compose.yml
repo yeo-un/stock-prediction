@@ -13,11 +13,12 @@ services:
       - ./backend:/app
       - /app/node_modules
 
-  ml-service:
+  ml-stock:
     build:
       context: ./ml-stock
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    volumes:
-      - ./ml-stock:/app
+    # volumes:
+    #   - ./ml-stock:/app
+    #   - ./ml-stock/app/data/dataset:/app/app/data/dataset

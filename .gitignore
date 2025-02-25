@@ -361,3 +361,6 @@ logs/
 # Build
 build/
 dist/
+
+# custom
+ml-stock/app/data/dataset/**
